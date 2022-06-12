@@ -45,7 +45,7 @@ class Map
             i = @map.index(entry)
             @map[i] = [key, value]
         else
-            @map << [key, value]
+            @map.push[key, value]
         end
     end
 
@@ -67,6 +67,6 @@ class Map
     end
 
     def show
-        return @map 
+        print @map 
     end
 end
