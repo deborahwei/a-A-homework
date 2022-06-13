@@ -31,17 +31,17 @@ class Board
     i = start_pos
     until stones == 0
       i = (i + 1) % cups.length # goes to the next cup
-      if i != 13
+      unless (i == 6 && current_player_name == @name2) || (i == 13 && current_player_name == @name1)
         cups[i] << :stone # add stone if it is not opponents cup
         stones -= 1 
       end
     end
     self.render
-    self.next_turn(i)
+    self.next_turn(i, current_player_name)
   end
 
-  def next_turn(ending_cup_idx)
-    return :prompt if ending_cup_idx == 6
+  def next_turn(ending_cup_idx, current_player_name)
+    return :prompt if (ending_cup_idx == 6 && current_player_name == @name1) || (ending_cup_idx == 13 && current_player_name == @name2) 
     return :switch if cups[ending_cup_idx].length == 1
     return ending_cup_idx if cups[ending_cup_idx].length > 1
   end
