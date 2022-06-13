@@ -7,6 +7,7 @@ class Board
   def initialize(name1, name2)
     @cups = Array.new(14) 
     self.place_stones
+    @name1, @name2 = name1, name2
   end
 
   def place_stones
@@ -54,14 +55,15 @@ class Board
   end
 
   def one_side_empty?
-    return [0..5].all? {|i| cup[i].empty?}
-    return [7..12].all? {|i| cup[i].empty?}
+    return (0..5).all? {|i| cups[i].empty?} || (7..12).all? {|j| cups[j].empty?}
   end
 
   def winner
-    return :draw if 
+    return :draw if cups[6] == cups[13] && cups[6].length == 6
+    return @name1 if cups[6].length == 6
+    return @name2 if cups[13].length == 6 
   end
 end
 
-# b = Board.new("D", "K")
-# b.make_move(3, "K")
+b = Board.new("D", "K")
+b.make_move(3, "K")
