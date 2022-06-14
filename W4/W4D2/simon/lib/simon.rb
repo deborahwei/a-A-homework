@@ -18,32 +18,35 @@ class Simon
   end
 
   def take_turn
-    until game_over
-      debugger
-      color_shown = show_sequence
-      color_input = require_sequence
-      if color_input != seq
-        game_over = true 
-        break
-      end
+    unless game_over
+      show_sequence
+      require_sequence
       round_success_message
-      sequence_length += 1
+      @sequence_length += 1
     end
   end
 
   def show_sequence
     add_random_color
-    return seq
+    @seq.each do |color|
+      puts color
+    end
   end
 
   def require_sequence
     p "Repeat the sequence that was just shown to you, separating each color with a new line"
-    return input = gets.chomp.split("\n")
+    @seq.each do |color|
+      color_input = gets.chomp.split 
+      if color[0] != color_input
+        @game_over = true 
+        break
+      end
+    end
   end
 
   def add_random_color
     i = rand(4)
-    seq << COLORS[i]
+    @seq << COLORS[i]
   end
 
   def round_success_message
@@ -55,8 +58,8 @@ class Simon
   end
 
   def reset_game
-    sequence_length = 1
-    game_over = false 
-    seq = []
+    @sequence_length = 1
+    @game_over = false 
+    @seq = []
   end
 end
