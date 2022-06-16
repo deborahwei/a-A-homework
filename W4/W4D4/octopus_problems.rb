@@ -46,8 +46,36 @@ def clever_octopus
     return longest
 end
 
+def slow_dance(move, arr)
+    arr.each_with_index do |direction, i|
+        if direction == move
+            return i
+        end
+    end
+    return nil
+end
+
+def fast_dance(move, hash)
+    return hash[move]
+end
+
 arr = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 
     'fiiiissshhhhhh']
-   
-p sluggish_octopus(arr)
+
+tiles_array = ["up", "right-up", "right", "right-down", "down", "left-down", 
+    "left",  "left-up" ]
+
+def make_new_tiles_data_structure(arr)
+    hash = Hash.new
+    arr.each_with_index do |move, i|
+        hash[move] = i
+    end
+    return hash
+end
+
+hash = make_new_tiles_data_structure(tiles_array)
+p fast_dance("left", hash)
+
+
+
 
