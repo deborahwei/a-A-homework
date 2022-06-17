@@ -9,7 +9,7 @@ class LRUCache
     end
 
     def add(el)
-        if self.count > 4
+        if @cache.count >= @size
             @cache.shift
         end
         @cache.push(el)
@@ -23,5 +23,3 @@ class LRUCache
     # helper methods go here!
 
   end
-
-  l = LRUCache.new(4)
