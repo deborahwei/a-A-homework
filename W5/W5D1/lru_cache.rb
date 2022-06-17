@@ -9,7 +9,9 @@ class LRUCache
     end
 
     def add(el)
-        if @cache.count >= @size
+        if @cache.include?(el)
+            @cache.delete(el)
+        elsif count >= @size
             @cache.shift
         end
         @cache.push(el)
