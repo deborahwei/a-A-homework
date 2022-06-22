@@ -15,11 +15,25 @@ class Play
   attr_accessor :id, :title, :year, :playwright_id
 
   def self.find_by_title(title)
-    data = PlayDBConnection.instance.execute("SELECT title FROM plays WHERE title = #{title}")
+    data = PlayDBConnection.instance.execute(<<-SQL, title)
+      SELECT
+        *
+      FROM 
+        plays
+      WHERE 
+        title = ?
+    SQL
+
+    # this is from solutions
+    # don't get why we need to only create new instance if there is more than one result returned
+    return nil unless person.length > 0 # person is stored in an array!
+
+    Playwright.new(person.first)
+
   end
 
   def self.find_by_playwright(name)
-    data = PlayDBConnection.instance.execute("SELECT title FROM plays WHERE playwright = #{name}")
+   playwright = Playwright.find_by_name(name)
   end
 
   def self.all
@@ -66,7 +80,15 @@ class Playwright
   end
 
   def self.find_by_name(name)
-    data = PlayDBConnection.instance.execute("SELECT title FROM plays WHERE playwright = #{name}")
+    data = PlayDBConnection.instance.execute(<<-SQL, name)
+    SELECT
+      *
+    FROM 
+      plays
+    WHERE 
+      name = ?
+  SQL
+
   end
 
   def initialize(options)
@@ -75,14 +97,15 @@ class Playwright
     @birth_year = options['birth_year']
   end
 
-  def create
+  def insert 
     raise "#{self} already in database" if self.id
-    PlayDBConnection.instance.execute(<<-SQL, self.name, self.birth_year, self.id)
+    PlayDBConnection.instance.execute(<<-SQL, self.name, self.birth_year)
       INSERT INTO
-        plays (id, name, birth_year)
+        plays (name, birth_year)
       VALUES
-        (?, ?, ?)
+        (?, ?)
     SQL
+    # this is just generating an integer for us to complete our initialization
     self.id = PlayDBConnection.instance.last_insert_row_id
   end
 
@@ -90,7 +113,7 @@ class Playwright
     raise "#{self} not in database" unless self.id
     PlayDBConnection.instance.execute(<<-SQL, self.name, self.birth_year, self.id)
       UPDATE
-        plays
+        playwrights
       SET
         name = ?, birth_year = ?
       WHERE
@@ -99,6 +122,15 @@ class Playwright
   end
 
   def get_plays
-    
+    raise "#{self} not in database" unless self.id
+    plays = PlayDBConnection.instance.execute(<<-SQL, self.id)
+      SELECT 
+        *
+      FROM 
+        plays 
+      WHERE playwright_id = ? 
+    SQL
+    plays.map { |play| Play.new(play)}
+    # why do I have to ;create a new instance when I am just trying to retrieve something
   end
 end
