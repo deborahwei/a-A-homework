@@ -3,4 +3,5 @@ class Driver < ApplicationRecord
     class_name: 'Bus',
     foreign_key: :bus_id,
     primary_key: :id
+  
 end
