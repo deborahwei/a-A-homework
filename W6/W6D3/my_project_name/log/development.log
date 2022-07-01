@@ -1,0 +1,18 @@
+  [1m[35m (104.2ms)[0m  [1m[35mCREATE DATABASE "my_project_name_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (48.4ms)[0m  [1m[35mCREATE DATABASE "my_project_name_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2022-06-27 14:04:32 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/deborahwei/.rbenv/versions/2.6.8/lib/ruby/gems/2.6.0/gems/railties-5.2.8/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/deborahwei/.rbenv/versions/2.6.8/lib/ruby/gems/2.6.0/gems/railties-5.2.8/lib/rails/templates/rails/welcome/index.html.erb (2.4ms)
+Completed 200 OK in 9ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2022-06-27 14:05:08 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/deborahwei/.rbenv/versions/2.6.8/lib/ruby/gems/2.6.0/gems/railties-5.2.8/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/deborahwei/.rbenv/versions/2.6.8/lib/ruby/gems/2.6.0/gems/railties-5.2.8/lib/rails/templates/rails/welcome/index.html.erb (3.4ms)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
