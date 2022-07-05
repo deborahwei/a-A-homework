@@ -10,14 +10,14 @@
           <input
             type="hidden"
             name="authenticity_token"
-            value="<%= form_authenticity_token %>">
+            value="<%= auth_token %>">
           <input type="submit" value="Approve">
         </form>
         <form action="<%= deny_cat_rental_request_url(req) %>" method="post">
           <input
             type="hidden"
             name="authenticity_token"
-            value="<%= form_authenticity_token %>">
+            value="<%= auth_token %>">
           <input type="submit" value="Deny">
         </form>
     <% else %>

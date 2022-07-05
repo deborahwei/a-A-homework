@@ -23,7 +23,7 @@
         <input
           type="hidden"
           name="authenticity_token"
-          value="<%= form_authenticity_token %>">
+          value="<%= auth_token %>">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Logout">
       </form>
@@ -34,4 +34,8 @@
       <%= yield %>
     </main>
   </body>
+  <footer>
+  This is our 99 Cats site.
+  <%= yield :footer %>
+  </footer>
 </html>
