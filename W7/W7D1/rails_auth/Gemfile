@@ -44,6 +44,7 @@ group :development do
   gem 'spring'
   gem 'annotate'
   gem 'pry-rails'
+  gem 'bcrypt'
 end
 
 group :test do
