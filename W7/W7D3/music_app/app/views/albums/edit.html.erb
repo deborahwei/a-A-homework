@@ -1,0 +1,32 @@
+<form action="<%= album_url(@album) %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label>Album title:
+        <input type="text" name="album[title]" value="<%= @album.title %>">
+    </label>
+    <br />
+
+     <label for="year">Year:
+        <input type="number" name="album[year]" id="year" value="<%= @album.year %>">
+    </label>
+    <br />
+
+        
+    <label for="studio">Live</label>
+    <input
+        type="radio"
+        name="album[live]"
+        value="true"
+        id="live"
+        <%= @album.live ? "checked" : "" %>>
+    <label for="studio">Studio</label>
+    <input
+        type="radio"
+        name="album[live]"
+        value="false"
+        id="studio"
+         <%= !@album.live ? "checked" : "" %>>
+    </label>
+    <br>
+
+    <input type="submit" value="Update Album">
+</form>
