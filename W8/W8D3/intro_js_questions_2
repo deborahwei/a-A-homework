@@ -1,0 +1,52 @@
+function titleize(arr, cb) {
+
+    function cbWrapper(el) {
+        const titleizedName = `Mx. ${el} Jingleheimer Schmidt`;
+        cb(titleizedName);
+    }
+
+    arr.forEach(cbWrapper);
+}
+
+function printCallback(ele) { 
+    console.log(ele);
+}
+
+// titleize(["Mary", "Brian", "Leo"], printCallback);
+
+function Elephant(elName, height, tricks) { 
+    this.elName = elName 
+    this.height = height 
+    this.tricks = tricks 
+}
+
+Elephant.prototype.trumpet = function() {
+    console.log(`${elName} goes phrRRRRRRRRRRR!!!!!!!`)
+}
+
+Elephant.prototype.grow = function() { 
+    this.height += 12
+    return this.height
+}
+
+Elephant.prototype.addTrick = function(trick) { 
+    this.tricks.push(trick)
+    return this.tricks
+}
+
+Elephant.prototype.play = function() { 
+    randomIndex = Math.floor(Math.random() * this.tricks.length)
+    trick = this.tricks[randomIndex]
+    console.log(`${this.elName} is ${trick}`)
+}
+
+let ellie = new Elephant("Ellie", 185, ["giving human friends a ride", "playing hide and seek"]);
+let charlie = new Elephant("Charlie", 200, ["painting pictures", "spraying water for a slip and slide"]);
+let kate = new Elephant("Kate", 234, ["writing letters", "stealing peanuts"]);
+let micah = new Elephant("Micah", 143, ["trotting", "playing tic tac toe", "doing elephant ballet"]);
+
+let herd = [ellie, charlie, kate, micah];
+
+function paradeHelper() {
+    
+}
