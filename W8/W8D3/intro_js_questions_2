@@ -47,6 +47,8 @@ let micah = new Elephant("Micah", 143, ["trotting", "playing tic tac toe", "doin
 
 let herd = [ellie, charlie, kate, micah];
 
-function paradeHelper() {
-    
+Elephant.paradeHelper = function(elephant) {
+    console.log(`${elephant} is trotting by!`);
 }
+
+console.log(Elephant.paradeHelper('micah'))
