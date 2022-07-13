@@ -51,4 +51,19 @@ Elephant.paradeHelper = function(elephant) {
     console.log(`${elephant} is trotting by!`);
 }
 
-console.log(Elephant.paradeHelper('micah'))
+// console.log(Elephant.paradeHelper('micah'))
+
+function dinerBreakfast(foodArgs) {
+    let order = "cheesy scrambled eggs";
+
+    return function(food) {
+        if (food) {
+            order += ' and ' + food;
+        }
+        return (`I'd like ${order} please`);
+    }
+}
+
+let bfastOrder = dinerBreakfast()
+console.log(bfastOrder("chocolate chip pancakes"))
+console.log(bfastOrder("grits"))
