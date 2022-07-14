@@ -64,6 +64,6 @@ function dinerBreakfast(foodArgs) {
     }
 }
 
-let bfastOrder = dinerBreakfast()
-console.log(bfastOrder("chocolate chip pancakes"))
-console.log(bfastOrder("grits"))
+let bfastOrder = dinerBreakfast();
+console.log(bfastOrder("chocolate chip pancakes"));
+console.log(bfastOrder("grits"));
