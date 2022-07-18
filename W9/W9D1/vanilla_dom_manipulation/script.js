@@ -50,6 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  const hiddenPhotoForm = document.querySelector(".photo-show-button");
+  hiddenPhotoForm .addEventListener("click",addNewPhotos);
+
+
   const handlePhotoSubmit = (e) => { 
     e.preventDefault();
 
